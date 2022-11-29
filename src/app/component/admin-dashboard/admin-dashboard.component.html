@@ -1,9 +1,302 @@
-<p>admin-dashboard works!</p>
+<!-- <p>admin-dashboard works!</p> -->
 
-
+<!-- 
 <div class="container">
     <header class="jumbotron">
-      <p>{{ content }}</p>
-      <!-- <p>admin-dashboard works!</p> -->
+      <!-- <p>{{ content }}</p> --
+      <p>admin-dashboard works!</p>
+    </header>
+  </div> -->
+
+
+
+  <div class="container">
+    <header class="jumbotron">
+
+      <div>
+        <!-- <mat-card>
+            <mat-card-header>
+              <mat-card-title>Welcome To Admin Dashboard</mat-card-title>
+              
+            </mat-card-header>
+            <mat-card-actions>
+              <button mat-button>ALL TRAINS</button>
+              <button mat-button>ADD TRAIN</button>
+            </mat-card-actions>
+          </mat-card> -->
+    
+          <mat-toolbar>
+            <span> Welcome To Admin Dashboard</span>
+          </mat-toolbar>
+    
+          <div>
+            <div class="row">
+                <div>
+                    <div>
+                        <input type="text" name="source" [(ngModel)]="source" id="" placeholder="From"> &nbsp;
+                        <input type="text" name="destination" [(ngModel)]="destination" id="" placeholder="To"> &nbsp;
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" (click)="searchTrain()">
+                                <span class="glyphicon glyphicon-search"> Search</span>
+                            </button>
+                            &nbsp;  &nbsp;   &nbsp;
+                             <!-- Button trigger modal -->
+                             <!-- <button class="btn btn-primary" type="button"   type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">ADD TRAIN
+                                <span class="glyphicon glyphicon-search">ADD TRAIN </span> 
+                            </button>  -->
+    
+                            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-bs-target="#exampleModal">
+                                ADD TRAIN
+                              </button> -->
+    
+                              <button (click)="clickAddTrain()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                ADD TRAIN
+                              </button>
+                              
+        
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <table class="table table-bordered">
+                <thead class="thead">
+                    <tr>
+                        <th>Train ID</th>
+                        <th>Train Name</th>
+                        <th>Source [FROM]</th>
+                        <th>Destination [TO]</th>
+                        <th>Fare</th>
+                        <th>Seats Available</th>
+                        <th>Time</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody">
+                    <tr *ngFor="let train of trainsList">
+                        <td>{{train.trainId}}</td>
+                        <td>{{train.trainName}}</td>
+                        <td>{{train.source}}</td>
+                        <td>{{train.destination}}</td>
+                        <td>₹{{train.price}}</td>
+                        <td>{{train.seats}}</td>
+                        <td>{{train.time}}</td>
+                        <td>
+                          <button  (click)="deleteTrain(train)"> DELETE</button> &nbsp;
+                           <!-- <button>UPDATE</button> -->
+                           <button (click)="onEditTrain(train)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Edit 
+                          </button>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+    <!-- 
+          <button style="width: 15%; margin-left: 900px; display: inline-block; " mat-raised-button color="warn"
+            (click)="clickAddprod()" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product</button> -->
+    
+           <!-- form to add new train to te list  -->
+          <!-- <div class="mt-5">
+            <form action="" #addTrainForm="ngForm" (ngSubmit)="register()">
+                <div class="form-group">
+                    <label for="trainName">Train-Name : </label>
+                    <input type="text" #trainName="ngModel" name="trainName" id="trainName">
+                </div>
+            </form>
+          </div> -->
+        
+    
+    
+          <!-- Modal -->
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Pooja Electronics</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="formValue">
+      
+                <div class="mb-3">
+                  <label class="form-label">Name</label>
+                  <input type="text" formControlName="name"  class="form-control" placeholder="Product Name "
+                    id="exampleInputEmail1" aria-describedby="emailHelp" required>
+       -->
+      
+                <!-- </div>
+      
+                <div class="mb-3">
+                  <label class="form-label">Category</label> -->
+                  <!-- <input type="text" formControlName="category" class="form-control" placeholder="Category " id="exampleInputPassword1">-->
+                  <!-- <select class="form-select" formControlName="category" class="form-control" placeholder="Category "
+                    id="exampleInputPassword1">
+                    <option selected>Open this select menu</option>
+                    <option value="Gadgets">Gadgets</option>
+                    <option value="Smart Phones">Smart Phones</option>
+                    <option value="Home Appliances">Home Appliance</option>
+                    <option value="Kitchen Appliances">Kitchen Appliances</option>
+                  </select>
+                </div>
+      
+                <div class="mb-3">
+                  <label class="form-label">Price</label>
+                  <input type="text" formControlName="price" class="form-control" placeholder="Price"
+                    id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Discount</label>
+                  <input type="text" formControlName="discount" class="form-control" placeholder="Discount"
+                    id="exampleInputPassword1">
+                </div>
+      
+                <div class="mb-3">
+                  <label class="form-label">Description</label>
+                  <input type="text" formControlName="discription" class="form-control" placeholder="Product Description"
+                    id="exampleInputPassword1">
+                </div>
+      
+                <div class="mb-3">
+                  <label class="form-label">Image</label>
+                  <input type="text" formControlName="imgUrl" class="form-control" placeholder="Image URL"
+                    id="exampleInputPassword1">
+                </div>
+      
+      
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addProduct()">Add Product</button>
+              <button *ngIf="showBtn" type="button" class="btn btn-primary" (click)="updateProd()">Update Product</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     -->
+    
+    
+    
+     <!-- modal demo -->
+    
+    
+     <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addTrainForm">
+                    <div class="form-group">
+                      <label for="trainName">Train Name</label>
+                      <input type="text" formControlName="trainName" class="form-control" id="trainName" placeholder="Enter Train Name">   
+                    </div>
+    
+                    <div class="form-group">
+                      <label for="source">Source</label>
+                      <input type="text" formControlName="source" class="form-control" id="source" placeholder="Source">
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" formControlName="destination" class="form-control" id="destination" placeholder="Destination">   
+                      </div>
+    
+                      <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" formControlName="price" class="form-control" id="price" placeholder="Price">
+                      </div>
+    
+                      <div class="form-group">
+                        <label for="seats">seatse</label>
+                        <input type="number" formControlName="seats" class="form-control" id="seats" placeholder="seats">   
+                      </div>
+    
+                      <div class="form-group">
+                        <label for="time">time</label>
+                        <input type="time" formControlName="time" class="form-control" id="time" placeholder="time">
+                      </div>
+                    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+              <button type="button" id="clear" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+              <button *ngIf="showAdd" type="button" class="btn btn-primary"  (click)="addTrain()">ADD</button>
+              <button *ngIf="showEdit" type="button" class="btn btn-primary"  (click)="updateTrain()">EDIT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    
+    
+    </div>
+    
+    
+    
+    
+    
+     <!-- Modal 
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                      <label for="trainName">Train Name</label>
+                      <input type="text" class="form-control" id="trainName" placeholder="Enter Train Name">   
+                    </div>
+    
+                    <div class="form-group">
+                      <label for="source">Source</label>
+                      <input type="text" class="form-control" id="source" placeholder="Source">
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" class="form-control" id="destination" placeholder="Destination">   
+                      </div>
+    
+                      <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" id="price" placeholder="Price">
+                      </div>
+    
+                      <div class="form-group">
+                        <label for="seats">seatse</label>
+                        <input type="text" class="form-control" id="seats" placeholder="seats">   
+                      </div>
+    
+                      <div class="form-group">
+                        <label for="time">time</label>
+                        <input type="time" class="form-control" id="time" placeholder="time">
+                      </div>
+                    !-- <button type="submit" class="btn btn-primary">Submit</button> --
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    -->
+
+      
     </header>
   </div>

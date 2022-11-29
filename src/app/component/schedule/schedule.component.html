@@ -1,1 +1,70 @@
-<p>schedule works!</p>
+<!-- <p>schedule works!</p> -->
+
+
+
+
+<div class="container">
+    <header class="jumbotron">
+      <!-- <p>{{ content }}</p> -->
+
+
+      <!-- <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed commodi dolorum cumque sapiente cupiditate deserunt deleniti reprehenderit beatae, eum voluptatum dolore ab suscipit numquam animi aliquid corrupti tempora, labore iure!</div> -->
+
+      <div>
+        <div class="row">
+            <div>
+                <div>
+                    <input type="text" name="source" [(ngModel)]="source" id="" placeholder="From">
+                    <input type="text" name="destination" [(ngModel)]="destination" id="" placeholder="To">
+                    <span class="input-group-btn">
+                        <button mat-raised-button class="btn btn-primary" type="button" (click)="searchTrain()">
+                            <span class="glyphicon glyphicon-search"> &nbsp; Search</span>
+                        </button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button mat-raised-button class="btn btn-primary" type="button" (click)="goBack()">
+                            <span class="glyphicon glyphicon-search"> &nbsp; Back</span>
+                        </button>
+                        <!-- <button mat-raised-button color="primary" (click)="searchTrain()"> Search</button> -->
+    
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead">
+                <tr>
+                    <th>Train ID</th>
+                    <th>Train Name</th>
+                    <th>Source [FROM]</th>
+                    <th>Destination [TO]</th>
+                    <th>Fare</th>
+                    <th>Seats Available</th>
+                    <th>Time</th>
+                    <!-- <th>Action</th> -->
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr *ngFor="let train of trainsList">
+                    <td>{{train.trainId}}</td>
+                    <td>{{train.trainName}}</td>
+                    <td>{{train.source}}</td>
+                    <td>{{train.destination}}</td>
+                    <td>₹{{train.price}}</td>
+                    <td>{{train.seats}}</td>
+                    <td>{{train.time}}</td>
+                    <!-- <td><button>Book Now</button></td> -->
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    </header>
+  </div>

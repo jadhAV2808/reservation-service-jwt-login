@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ScheduleComponent } from './component/schedule/schedule.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,16 @@ import { ScheduleComponent } from './component/schedule/schedule.component';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    // MaterialModule,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
   ],
   providers: [ authInterceptorProviders],
   bootstrap: [AppComponent]
