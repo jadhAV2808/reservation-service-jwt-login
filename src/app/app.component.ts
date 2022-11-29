@@ -13,7 +13,8 @@ export class AppComponent implements OnInit{
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
-  username?: string;
+  // username?: string;
+  username:string;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 

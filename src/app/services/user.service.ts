@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 
 
-const API_URL = 'http://localhost:3033/api/test/';
+const API_URL = 'http://localhost:3033/feign/user/';
 
 
 @Injectable({
