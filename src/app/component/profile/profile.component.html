@@ -17,64 +17,33 @@
     />
 
 
+    <h3>
+      <strong>{{ currentUser.username }}'s</strong> Profile
+    </h3>
 
-    <div class="container">
-      <div class="row">
-        <!-- <div class="col"> -->
-          <h3>
-            <strong>{{ currentUser.username }}'s</strong> Profile
-          </h3>
+    <br>
 
-          <br>
+    <p>
+      <strong>Name:</strong>
+      {{ currentUser.username }}
+    </p>
 
-          <p>
-            <strong>Name:</strong>
-            {{ currentUser.username }}
-          </p>
-    
-          <p>
-            <strong>PNR Number:</strong>
-            {{ currentUser.id }}
-          </p>
-    
-          <!-- <p>
-            <strong>Contact No:</strong>
-            {{ currentUser.phone }}
-          </p>
-     -->
-          <p>
-            <strong>Email:</strong>
-            {{ currentUser.email }}
-          </p>
-    
-    
-          <!-- <p>
-            <strong>Age:</strong>
-            {{ currentUser.age }}
-          </p> -->
+    <p>
+      <strong>PNR Number:</strong>
+      {{ currentUser.id }}
+    </p>
 
-          <strong>Roles:</strong>
+    <p>
+      <strong>Email:</strong>
+      {{ currentUser.email }}
+    </p>
+
+    <strong>Roles:</strong>
           <ul>
             <li *ngFor="let role of currentUser.roles">
               {{ role }}
             </li>
           </ul>
-    
-    
-        <!-- </div> -->
-        <!-- <div class="col">
-          
-            <p>
-              <button  class="" data-bs-toggle="modal" data-bs-target="#myModal" (click)="onEditUser(currentUser)"> Update Details</button>
-            </p>
-            <p>
-              <button mat-raised-button color="warn"> Delete Account</button>
-            </p> 
-        </div> -->
-      </div>
-    </div>
-
-
       </div>
 
       <!--
@@ -127,6 +96,50 @@
       </ul>
      </div> -->
 
+     <div>
+      <div>
+        <input type="text" [(ngModel)]="tId" placeholder="Enter TicketId">
+      </div>
+      <div>
+        <button (click)="getTicketById()">search</button>
+      </div>
+     </div>
+
+      <div>
+        <div>
+          <table class="table table-bordered">
+              <thead class="thead">
+                  <tr>
+                      <th>PassangerName</th>
+                      <th>PassangerContact</th>
+                      <th>passangerEmail</th>
+                      <th>Source</th>
+                      <th>Destination</th>
+                      <th>Price</th>
+                      <th>Time</th>
+                      <th>Date</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody class="tbody">
+                  <!-- <tr *ngFor="let ticket of ticketDetails"> -->
+                      <td>{{ticketDetails.passangerName}}</td>
+                      <td>{{ticketDetails.passangerContact}}</td>
+                      <td>{{ticketDetails.passangerEmail}}</td>
+                      <td>{{ticketDetails.source}}</td>
+                      <td>{{ticketDetails.destination}}</td>
+                      <td>₹{{ticketDetails.price}}</td> 
+                      <td>{{ticketDetails.time}}</td>
+                      <td>{{ticketDetails.date}}</td>
+                      <td><a id="payment" type="button" target="_blank" class="btn btn-primary" href="http://localhost:6868/" >Pay Now</a></td>
+                      <!-- <td><button type="button" class="btn btn-primary">payNow</button></td> -->
+                  <!-- </tr> -->
+                  
+              </tbody>
+          </table>
+      </div>
+  
+      </div>
 
      <!-- modal for updating the user details -->
 

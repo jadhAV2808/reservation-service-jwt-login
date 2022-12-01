@@ -44,6 +44,7 @@ export class UserDashboardComponent implements OnInit {
 
   // object for ticket booking
   ticketBookingModelObj:TicketData=new TicketData();
+  ticketDetailsObject;
 
 
   constructor(private trainsListServcie:HomeTrainsListService ,private router:Router, private formBuilder:FormBuilder,private ticketService:TicketService) {
@@ -139,7 +140,8 @@ export class UserDashboardComponent implements OnInit {
     this.ticketService.bookTicket(this.ticketBookingModelObj)
     .subscribe(res=>{
      console.log(res);
-     alert("Train Added SuccessFully!");
+     alert("Train Added SuccessFully! Your Ticket Id is "+res.ticketId +"  Please Remember your ticketId");
+     this.ticketDetailsObject=res;
      this.ticketBookingForm.reset();
     
    },

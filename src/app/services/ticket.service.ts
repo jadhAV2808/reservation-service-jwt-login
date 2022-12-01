@@ -18,19 +18,21 @@ export class TicketService {
     // }))
   }
 
-
+/*
   postTicket(ticket: any): Observable<any[]>
-
   {
-
     return this.http.post<any[]>('http://localhost:3032/tickets/bookTicket',ticket)
-
   }
-
+*/
 
   //to get all tickets
   getTickets(){
+  }
 
+
+  // fing ticket by id
+  getTicketById(id:number){
+    return this.http.get('http://localhost:3032/tickets/getTicket/'+id);
   }
 
 
