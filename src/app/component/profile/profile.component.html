@@ -1,13 +1,190 @@
-<p>profile works!</p>
+
 
 
 
 <div class="container" *ngIf="currentUser; else loggedOut">
     <header class="jumbotron">
+
+      <div class="profileImage">
+        <img
+
+      id="profile-img"
+
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+
+      class="profile-img-card"
+
+    />
+
+
+
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col"> -->
+          <h3>
+            <strong>{{ currentUser.username }}'s</strong> Profile
+          </h3>
+
+          <br>
+
+          <p>
+            <strong>Name:</strong>
+            {{ currentUser.username }}
+          </p>
+    
+          <p>
+            <strong>PNR Number:</strong>
+            {{ currentUser.id }}
+          </p>
+    
+          <!-- <p>
+            <strong>Contact No:</strong>
+            {{ currentUser.phone }}
+          </p>
+     -->
+          <p>
+            <strong>Email:</strong>
+            {{ currentUser.email }}
+          </p>
+    
+    
+          <!-- <p>
+            <strong>Age:</strong>
+            {{ currentUser.age }}
+          </p> -->
+
+          <strong>Roles:</strong>
+          <ul>
+            <li *ngFor="let role of currentUser.roles">
+              {{ role }}
+            </li>
+          </ul>
+    
+    
+        <!-- </div> -->
+        <!-- <div class="col">
+          
+            <p>
+              <button  class="" data-bs-toggle="modal" data-bs-target="#myModal" (click)="onEditUser(currentUser)"> Update Details</button>
+            </p>
+            <p>
+              <button mat-raised-button color="warn"> Delete Account</button>
+            </p> 
+        </div> -->
+      </div>
+    </div>
+
+
+      </div>
+
+      <!--
       <h3>
         <strong>{{ currentUser.username }}</strong> Profile
       </h3>
+
+      
+         <p>
+        <strong>Token:</strong>
+        {{ currentUser.accessToken.substring(0, 20) }} ...
+        {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
+      </p>
+     
+
+    
+
+      <p>
+        <strong>Name:</strong>
+        {{ currentUser.username }}
+      </p>
+
+      <p>
+        <strong>PNR Number:</strong>
+        {{ currentUser.id }}
+      </p>
+
+      <p>
+        <strong>Contact No:</strong>
+        {{ currentUser.phone }}
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        {{ currentUser.email }}
+      </p>
+
+
+      <p>
+        <strong>Age:</strong>
+        {{ currentUser.age }}
+      </p>
+
+
+      <strong>Roles:</strong>
+      <ul>
+        <li *ngFor="let role of currentUser.roles">
+          {{ role }}
+        </li>
+      </ul>
+     </div> -->
+
+
+     <!-- modal for updating the user details -->
+
+     <div class="container">
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 modal-title>Update User Details</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <form action=""  [formGroup]="myUserForm">
+               
+                <div class="mb-3">
+                  <label for="" class="form-label">UserName</label>
+                <input type="text" formControlName="username" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                  <label for="" class="form-label">email</label>
+                  <input type="email" formControlName="email" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                  <label for="" class="form-label">Contact No</label>
+                  <input type="tel" formControlName="phone" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                  <label for="" class="form-label">password</label>
+                  <input type="password" formControlName="password" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                  <label for="" class="form-label">Age</label>
+                  <input type="number" formControlName="age" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                  <label for="" class="form-label">Gender</label>
+                  <input type="text" formControlName="gender" class="form-control">  
+                </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" (click)="updateUser()">Udate</button>
+              <button type="submit" data-bs-dismiss="modal" class="btn btn-primary" >Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+      
     </header>
+  </div>
+<!--     
     <p>
       <strong>Token:</strong>
       {{ currentUser.accessToken.substring(0, 20) }} ...
@@ -24,6 +201,8 @@
       </li>
     </ul>
   </div>
+   -->
+
   
   <ng-template #loggedOut>
     Please login.

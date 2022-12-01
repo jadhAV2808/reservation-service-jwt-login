@@ -4,6 +4,21 @@ nav{
     
 }
 
+.navbar-brand{
+    color: blue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.yatri{
+    color: red !important;
+}
+
+.nav-link{
+    color: white !important;
+    font-size: larger;
+}
+
+
 
 .home{
     background-image: url('/assets/img/t5.webp'); 

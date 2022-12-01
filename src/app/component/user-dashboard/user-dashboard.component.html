@@ -3,7 +3,7 @@
 <div class="container">
     <header class="jumbotron">
     
-      <p>user-dashboard works!</p>
+      <!-- <p>user-dashboard works!</p> -->
 
 
       <div>
@@ -11,13 +11,15 @@
             <div>
                 <div>
                     <input type="text" name="source" [(ngModel)]="source" id="" placeholder="From">
+                    &nbsp;&nbsp;
                     <input type="text" name="destination" [(ngModel)]="destination" id="" placeholder="To">
+                    &nbsp;&nbsp;
                     <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button" (click)="searchTrain()">
+                        <button id="searchButton" class="btn btn-primary" type="button" (click)="searchTrain()">
                             <span class="glyphicon glyphicon-search"> &nbsp; Search</span>
                         </button>
-    
-                        <button class="btn btn-primary" type="button" (click)="goBack()">
+                        
+                        <button id="backButton" class="btn btn-primary" type="button" (click)="goBack()">
                             <span class="glyphicon glyphicon-search"> &nbsp; Back</span>
                         </button>
     
@@ -51,11 +53,91 @@
                     <td>₹{{train.price}}</td>
                     <td>{{train.seats}}</td>
                     <td>{{train.time}}</td>
-                    <td><button>Book Now</button></td>
+                    <!-- <td (click)="goToBooking()"><button>Book Now</button></td> -->
+                    <td  data-bs-toggle="modal" data-bs-target="#myModal"  (click)="onBooking(train)"><button>Book Now</button></td>
                 </tr>
                 
             </tbody>
         </table>
     </div>
+
+
+
+    <!-- modal for ticket booking -->
+
+    <div class="container">
+        <div class="modal" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 modal-title>Book Ticket Here</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="ticketBookingForm">
+                 
+                  <div class="mb-3">
+                    <label for="" class="form-label">Passanger Name</label>
+                  <input type="text" formControlName="passangerName" class="form-control">
+                  </div>
+  
+                  <div class="mb-3">
+                    <label for="" class="form-label">Passanger Contact</label>
+                    <input type="tel" formControlName="passangerContact"  class="form-control">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Passanger email</label>
+                    <input type="email" formControlName="passangerEmail" class="form-control">
+                  </div>
+  
+                  <div class="mb-3">
+                    <label for="" class="form-label">Train Id</label>
+                    <input type="number" formControlName="trainId"  class="form-control">
+                  </div>
+  
+                  <div class="mb-3">
+                    <label for="" class="form-label">Train Name</label>
+                    <input type="text" formControlName="trainName"  class="form-control">  
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Source</label>
+                    <input type="text" formControlName="source"  class="form-control">  
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Destination</label>
+                    <input type="text" formControlName="destination"  class="form-control">  
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Price</label>
+                    <input type="number" formControlName="price"  class="form-control">  
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Time</label>
+                    <input type="time" formControlName="time"  class="form-control">  
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Date</label>
+                    <input type="text" formControlName="date"  class="form-control"  placeholder="dd-mm-yyyy">  
+                  </div>
+
+                  </form>
+              </div>
+  
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" (click)="onSubmitOfTicket()">Submit</button>
+                <button type="submit" data-bs-dismiss="modal" class="btn btn-primary" >Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+        
+
     </header>
   </div>

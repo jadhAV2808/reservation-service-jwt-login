@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
+import { BookingComponent } from './component/booking/booking.component';
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 import { ProfileComponent } from './component/profile/profile.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'user', component: UserDashboardComponent },
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'schedule', component: ScheduleComponent },
+  {path:'booking' , component:BookingComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   
 

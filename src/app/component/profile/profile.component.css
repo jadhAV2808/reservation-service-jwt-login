@@ -1,0 +1,19 @@
+.profile-img-card {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 10px;
+    display: block;
+    /* -moz-border-radius: 50%;
+    -webkit-border-radius: 50%; */
+    border-radius: 50%;
+  }
+
+
+  .row{
+    margin: 0 auto 10px;
+    text-align: center;
+  }
+
+  .col{
+    margin-left: 100px;
+  }

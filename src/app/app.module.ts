@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ScheduleComponent } from './component/schedule/schedule.component';
 import { MaterialModule } from './material/material.module';
+import { BookingComponent } from './component/booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MaterialModule } from './material/material.module';
     ProfileComponent,
     RegisterComponent,
     ScheduleComponent,
+    BookingComponent,
     // MaterialModule,
   ],
   imports: [
