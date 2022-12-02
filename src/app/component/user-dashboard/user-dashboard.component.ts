@@ -149,21 +149,24 @@ export class UserDashboardComponent implements OnInit {
      alert("Something went Wrong!!!");
    }
    )
+ 
+    /*
+    .subscribe(res=>{
+      console.log(res);
+      alert("ticket booking Successful!");
+      this.ticketBookingForm.reset();
+    },
+    err=>{
+      alert("something went wrong!");
+    }
+    )
+*/
 
-    
-    
-    // .subscribe(res=>{
-    //   console.log(res);
-    //   alert("ticket booking Successful!");
-    //   this.ticketBookingForm.reset();
-    // },
-    // err=>{
-    //   alert("something went wrong!");
-    // }
-    // )
+  }
 
 
-
+  getTicketDetails(){
+    this.ticketService.ticketDetails=this.ticketDetailsObject;
   }
 
 }

@@ -1,15 +1,15 @@
-<p>register works!</p>
+<!-- <p>register works!</p> -->
 
 
 
 <div class="col-md-12">
-    <div class="card card-container">
+    <div class="card card-container"  id="signup">
       <img
         id="profile-img"
         src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
         class="profile-img-card"
       />
-      <form
+      <form 
         *ngIf="!isSuccessful"
         name="form"
         (ngSubmit)="f.form.valid && onSubmit()"
@@ -25,7 +25,7 @@
             [(ngModel)]="form.username"
             required
             minlength="3"
-            maxlength="20"
+            maxlength="15"
             #username="ngModel"
           />
           <div class="alert-danger" *ngIf="username?.errors && f.submitted">
@@ -34,7 +34,7 @@
               Username must be at least 3 characters
             </div>
             <div *ngIf="username?.errors?.['maxlength']">
-              Username must be at most 20 characters
+              Username must be at most 15 characters
             </div>
           </div>
         </div>
@@ -77,6 +77,7 @@
         <div class="form-group">
           <button class="btn btn-primary btn-block">Sign Up</button>
         </div>
+        <p>Have an account?<a href="/login">Login Now</a></p>
   
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
           Signup failed!<br />{{ errorMessage }}

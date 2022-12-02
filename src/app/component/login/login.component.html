@@ -81,8 +81,8 @@
 
 <div class="col-md-12">
 
-  <div class="card card-container">
-<!-- 
+  <div class="card card-container" id="login" *ngIf="!isLoggedIn">
+ 
     <img
 
       id="profile-img"
@@ -92,11 +92,10 @@
       class="profile-img-card"
 
     />
- -->
+
     <form
 
-      *ngIf="!isLoggedIn"
-
+     
       name="form"
 
       (ngSubmit)="f.form.valid && onSubmit()"
@@ -186,6 +185,7 @@
         </button>
 
       </div>
+      <p>Don't have an account? <a href="/register">Sign Up</a></p>
 
 
       <div class="form-group">
@@ -206,7 +206,7 @@
 
       <!-- Logged in as {{ roles }}. -->
 
-      Logged in Successfully!
+      <!-- Logged in Successfully! -->
      
 
     </div>

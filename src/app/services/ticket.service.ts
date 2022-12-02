@@ -36,6 +36,7 @@ export class TicketService {
   }
 
 
+  ticketDetails:any;
 
 
 }

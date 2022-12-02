@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   // ticket showing 
   ticketDetails:any;
   tId:number;
+  ticketDetails2:any;
 
   // to add new train
   myUserForm!:FormGroup;
@@ -97,6 +98,11 @@ export class ProfileComponent implements OnInit {
       );
   }
 
+
+
+  setTicketDetails(){
+    this.ticketDetails2=this.ticketService.ticketDetails;
+  }
   
 }
 

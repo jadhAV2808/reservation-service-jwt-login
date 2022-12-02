@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HomeTrainsListService } from 'src/app/services/home-trains-list.service';
 import { UserService } from 'src/app/services/user.service';
@@ -89,7 +89,7 @@ export class AdminDashboardComponent implements OnInit {
 
    // to new train to the list
    this.addTrainForm=this.formBuilder.group({
-     trainName:[''],
+     trainName:['' ,[Validators.required]],
      source:[''],
      destination:[''],
      price:[''],

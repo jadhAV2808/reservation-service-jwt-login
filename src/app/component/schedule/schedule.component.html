@@ -14,16 +14,17 @@
         <div class="row">
             <div>
                 <div>
-                    <input type="text" name="source" [(ngModel)]="source" id="" placeholder="From">
-                    <input type="text" name="destination" [(ngModel)]="destination" id="" placeholder="To">
+                    <input type="text" name="source" [(ngModel)]="source" id="" placeholder="From" required> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="destination" [(ngModel)]="destination" id="" placeholder="To" required>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="input-group-btn">
-                        <button mat-raised-button class="btn btn-primary" type="button" (click)="searchTrain()">
+                        <button mat-raised-button class="search" type="button" (click)="searchTrain()">
                             <span class="glyphicon glyphicon-search"> &nbsp; Search</span>
                         </button>
-                        &nbsp;&nbsp;&nbsp;
+                        <!-- &nbsp;&nbsp;&nbsp;
                         <button mat-raised-button class="btn btn-primary" type="button" (click)="goBack()">
                             <span class="glyphicon glyphicon-search"> &nbsp; Back</span>
-                        </button>
+                        </button> -->
                         <!-- <button mat-raised-button color="primary" (click)="searchTrain()"> Search</button> -->
     
                     </span>
@@ -32,9 +33,13 @@
         </div>
     </div>
     
+    <br><br>
     
     <div>
-        <table class="table table-bordered">
+        <div>
+            <!-- <h3>All Available Trains List</h3> -->
+        </div>
+        <table id="trains-table" class="table table-bordered">
             <thead class="thead">
                 <tr>
                     <th>Train ID</th>
