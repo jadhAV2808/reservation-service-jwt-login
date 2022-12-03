@@ -169,4 +169,27 @@ export class UserDashboardComponent implements OnInit {
     this.ticketService.ticketDetails=this.ticketDetailsObject;
   }
 
+
+/* for froms validation  */
+letterOnly(event:any) : Boolean{
+  const charCode = (event.which) ? event.which : event.keyCode;
+  if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+    return false;
+  }
+  return true;
+}
+
+keyPressNumbers(event: any) {
+  var charCode = (event.which) ? event.which : event.keyCode;
+  if ((charCode < 48 || charCode > 57))
+  {
+    event.preventDefault();
+    return false;
+  } else
+   {
+    return true;
+  }
+
+}
+
 }

@@ -6,44 +6,30 @@
     <header class="jumbotron">
 
       <div class="profileImage">
-        <img
+        <!-- <img id="profile-img"  src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" /> -->
+        
+          <h3>
+            <strong>{{ currentUser.username }}'s</strong> Profile
+          </h3>
 
-      id="profile-img"
+          <br>
 
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          <p>
+            <strong>Name:</strong>
+            {{ currentUser.username }}
+          </p>
 
-      class="profile-img-card"
+          <p>
+            <strong>PNR Number:</strong>
+            {{ currentUser.id }}
+          </p>
 
-    />
+          <p>
+            <strong>Email:</strong>
+            {{ currentUser.email }}
+          </p>
 
-
-    <h3>
-      <strong>{{ currentUser.username }}'s</strong> Profile
-    </h3>
-
-    <br>
-
-    <p>
-      <strong>Name:</strong>
-      {{ currentUser.username }}
-    </p>
-
-    <p>
-      <strong>PNR Number:</strong>
-      {{ currentUser.id }}
-    </p>
-
-    <p>
-      <strong>Email:</strong>
-      {{ currentUser.email }}
-    </p>
-
-    <strong>Roles:</strong>
-          <ul>
-            <li *ngFor="let role of currentUser.roles">
-              {{ role }}
-            </li>
-          </ul>
+   
       </div>
 
       <!--
@@ -98,17 +84,16 @@
 
      <div>
       <div>
-        <input type="text" [(ngModel)]="tId" placeholder="Enter TicketId">
-      </div>
-      <div>
+        <input type="text" [(ngModel)]="tId" placeholder="Enter TicketId"> &nbsp; &nbsp;&nbsp; &nbsp;
         <button (click)="getTicketById()">search</button>
-        <!-- <button (click)="setTicketDetails()">set</button> -->
-      </div>
+      </div>  
      </div>
+
+     <br><br><br>
 
       <div>
         <div>
-          <table class="table table-bordered">
+          <table class="table table-bordered" id="trains-table">
               <thead class="thead">
                   <tr>
                       <th>PassangerName</th>

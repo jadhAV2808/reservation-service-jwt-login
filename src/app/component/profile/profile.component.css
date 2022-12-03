@@ -18,4 +18,38 @@
     margin-left: 100px;
   }
 
+  .jumbotron{
+    background-color: aliceblue;
+    color: darkblue;
+  }
+
+  #trains-table{
+    color: rgb(44, 11, 164) !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+ }
+ 
+ #trains-table th{
+    background-color: rgb(96, 195, 222) !important;
+    color: rgb(211, 31, 115) !important;
+ }
+ 
+ button{
+  background-color: rgb(21, 210, 217);
+  color: white;
+  border-radius: 12px;
+  padding: 10px 40px;
+  font-size: larger;
   
+ }
+ input{
+  width: 20%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background-color: azure;
+  color: rgb(27, 167, 237);
+ }
+
+ #payment{
+  background-color: blue;
+ }

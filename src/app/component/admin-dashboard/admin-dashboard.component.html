@@ -25,18 +25,19 @@
             </mat-card-actions>
           </mat-card> -->
     
-          <mat-toolbar>
+          <!-- <mat-toolbar>
             <span> Welcome To Admin Dashboard</span>
           </mat-toolbar>
-    
+     -->
+
           <div>
             <div class="row">
                 <div>
                     <div>
-                        <input type="text" name="source" [(ngModel)]="source" id="" placeholder="From"> &nbsp;
-                        <input type="text" name="destination" [(ngModel)]="destination" id="" placeholder="To"> &nbsp;
+                        <input type="text" name="source" [(ngModel)]="source" id="sourceSearch" placeholder="From"> &nbsp;
+                        <input type="text" name="destination" [(ngModel)]="destination" id="destinationSearch" placeholder="To"> &nbsp;
                         <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" (click)="searchTrain()">
+                            <button class="btn btn-primary" type="button" (click)="searchTrain()" id="searchButton">
                                 <span class="glyphicon glyphicon-search"> Search</span>
                             </button>
                             &nbsp;  &nbsp;   &nbsp;
@@ -49,7 +50,7 @@
                                 ADD TRAIN
                               </button> -->
     
-                              <button (click)="clickAddTrain()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                              <button (click)="clickAddTrain()" type="button" id="addTrain" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 ADD TRAIN
                               </button>
                               
@@ -61,7 +62,7 @@
         </div>
         
         <div>
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="trains-table">
                 <thead class="thead">
                     <tr>
                         <th>Train ID</th>
@@ -84,10 +85,10 @@
                         <td>{{train.seats}}</td>
                         <td>{{train.time}}</td>
                         <td>
-                          <button  (click)="deleteTrain(train)"> DELETE</button> &nbsp;
+                          <button  (click)="deleteTrain(train)" id="deleteButton"> DELETE</button> &nbsp;
                            <!-- <button>UPDATE</button> -->
-                           <button (click)="onEditTrain(train)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Edit 
+                           <button (click)="onEditTrain(train)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="editButton">
+                            EDIT
                           </button>
                         </td>
                     </tr>
@@ -197,32 +198,119 @@
                 <form [formGroup]="addTrainForm">
                     <div class="form-group">
                       <label for="trainName">Train Name</label>
-                      <input type="text" formControlName="trainName" class="form-control" id="trainName" placeholder="Enter Train Name">   
+                      <input type="text" formControlName="trainName" (keypress)="letterOnly($event)"  class="form-control" id="trainName" placeholder="Enter Train Name"> 
+                      
+                            
+                     <!--
+                      <input type="text" formControlName="trainName" [ngClass]="{ 'is-invalid': submitted && addTrainForm?.controls?.['trainName']?.errors}" class="form-control" id="trainName" placeholder="Enter Train Name"> 
+                      
+                       !-- for getting error messages --
+                      <div *ngIf="submitted && f['trainName'].errors" class="text-danger">
+                        <div *ngIf="submitted && f['trainName'].errors?.['required']">
+                          train name is required
+                        </div>
+                        <div *ngIf="submitted && f['trainName'].errors?.['minLength']">
+                          train name contains atleast 3 letters
+                        </div>
+                        <div *ngIf="submitted && f['trainName'].errors?.['maxLength']">
+                          train name contains maximum 20 letters
+                        </div>
+                      </div> -->
+
+
+
+
                     </div>
     
                     <div class="form-group">
                       <label for="source">Source</label>
-                      <input type="text" formControlName="source" class="form-control" id="source" placeholder="Source">
+                      <input type="text" formControlName="source"  (keypress)="letterOnly($event)" class="form-control" id="source" placeholder="Source">
+
+
+
+<!-- 
+                      <input type="text" formControlName="source" [ngClass]="{ 'is-invalid': submitted && f['source'].errors}" class="form-control" id="source" placeholder="Source">
+                      !-- for getting error messages --
+                      <div *ngIf="submitted && f['source'].errors" class="text-danger">
+                        <div *ngIf="submitted && f['source'].errors?.['required']">
+                          train name is required
+                        </div>
+                        <div *ngIf="submitted && f['source'].errors?.['minLength']">
+                          train name contains atleast 3 letters
+                        </div>
+                        <div *ngIf="submitted && f['source'].errors?.['maxLength']">
+                          train name contains maximum 20 letters
+                        </div>
+                      </div>
+ -->
+
                     </div>
     
                     <div class="form-group">
                         <label for="destination">Destination</label>
-                        <input type="text" formControlName="destination" class="form-control" id="destination" placeholder="Destination">   
+                        <input type="text" formControlName="destination" (keypress)="letterOnly($event)" class="form-control" id="destination" placeholder="Destination"> 
+                        
+
+<!-- 
+                        <input type="text" formControlName="destination" [ngClass]="{ 'is-invalid': submitted && f['destination'].errors}" class="form-control" id="destination" placeholder="Destination"> 
+                         !-- for getting error messages --
+                        <div *ngIf="submitted && f['destination'].errors" class="text-danger">
+                          <div *ngIf="submitted && f['destination'].errors?.['required']">
+                            destination is required
+                          </div>
+                          <div *ngIf="submitted && f['destination'].errors?.['minLength']">
+                            destination contains atleast 3 letters
+                          </div>
+                          <div *ngIf="submitted && f['destination'].errors?.['maxLength']">
+                            destination contains maximum 20 letters
+                          </div>
+                        </div> -->
+
+
+
                       </div>
     
                       <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="number" formControlName="price" class="form-control" id="price" placeholder="Price">
+                        <input type="number" formControlName="price" (keypress)="keyPressNumbers($event)" class="form-control" id="price" placeholder="Price">
+
+<!-- 
+                        <input type="number" formControlName="price" [ngClass]="{ 'is-invalid': submitted && f['price'].errors}" class="form-control" id="price" placeholder="Price">
+
+                        <div *ngIf="submitted && f['price'].errors" class="text-danger">
+                          <div *ngIf="submitted && f['price'].errors?.['required']">
+                            price is required
+                          </div>
+                        </div> -->
+
                       </div>
     
                       <div class="form-group">
-                        <label for="seats">seatse</label>
-                        <input type="number" formControlName="seats" class="form-control" id="seats" placeholder="seats">   
+                        <label for="seats">seats</label>
+                        <input type="number" formControlName="seats" (keypress)="keyPressNumbers($event)"  class="form-control" id="seats" placeholder="seats">   
+
+<!-- 
+                        <input type="number" formControlName="seats" [ngClass]="{ 'is-invalid': submitted && f['seats'].errors}" class="form-control" id="seats" placeholder="seats">   
+
+                        <div *ngIf="submitted && f['price'].errors" class="text-danger">
+                          <div *ngIf="submitted && f['price'].errors?.['required']">
+                            price is required
+                          </div>
+                        </div> -->
+
                       </div>
     
                       <div class="form-group">
                         <label for="time">time</label>
-                        <input type="time" formControlName="time" class="form-control" id="time" placeholder="time">
+                        <input type="time" formControlName="time" (keypress)="keyPressNumbers($event)"  class="form-control" id="time" placeholder="time">
+
+                        <!-- <input type="time" formControlName="time" [ngClass]="{ 'is-invalid': submitted && f['time'].errors}" class="form-control" id="time" placeholder="time">
+                        <div *ngIf="submitted && f['time'].errors" class="text-danger">
+                          <div *ngIf="submitted && f['time'].errors?.['required']">
+                            time is required
+                          </div>
+                        </div> -->
+
                       </div>
                     <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                   </form>

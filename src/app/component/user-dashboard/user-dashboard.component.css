@@ -2,3 +2,87 @@
    /* align-content: flex-end; */
    float: right;
 }
+
+#source {
+   border: 2px solid rgb(10, 78, 134);
+   border-radius: 8px;
+   width: 30%;
+   padding: 10px 10px;
+   margin: 8px 0;
+   box-sizing: border-box;
+   color: rgb(11, 93, 187);
+}
+
+#destination {
+   border: 2px solid rgb(10, 78, 134);
+   border-radius: 8px;
+   width: 30%;
+   padding: 10px 10px;
+   margin: 8px 0;
+   box-sizing: border-box;
+   color: rgb(11, 93, 187);
+}
+
+.search{
+   background-color: rgb(14, 197, 229);
+   color: white;
+}
+
+h3{
+   color: rgb(10, 157, 147);
+   text-align: center;
+}
+.jumbotron{
+   background-color: azure;
+}
+
+#trains-table{
+   color: rgb(44, 11, 164) !important;
+   font-family: Arial, Helvetica, sans-serif !important;
+}
+
+#trains-table th{
+   background-color: rgb(96, 195, 222) !important;
+   color: rgb(211, 31, 115) !important;
+}
+
+#trains-table tr:nth-child(even){
+   background-color: #c5e7ed !important;
+}
+
+#trains-table tr:hover {
+   background-color: rgb(221, 241, 241) !important;
+}
+
+#bookNow{
+   background-color: rgb(72, 168, 197);
+   border-radius: 8px;
+   font-size: 15px;
+   border: 2px solid #087b95;
+   padding: 10px 10px;
+   color: white!important;
+   
+}
+
+.modal-content{
+   background-color: azure !important;
+}
+h3{
+   color: rgb(51, 128, 221);
+   text-align: center !important;
+}
+
+label{
+   color: #5190e1;
+   font-size: larger;
+   font-weight: bold;
+   font-style: normal;
+   
+}
+
+input{
+  
+   font-size: larger;
+   font-weight: bold;
+   font-style: normal;
+}

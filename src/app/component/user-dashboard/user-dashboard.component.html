@@ -10,10 +10,10 @@
         <div class="row">
             <div>
                 <div>
-                    <input type="text" name="source" [(ngModel)]="source" id="" placeholder="From">
+                    <input type="text" name="source" [(ngModel)]="source" id="source" (keypress)="letterOnly($event)" placeholder="From">
                     &nbsp;&nbsp;
-                    <input type="text" name="destination" [(ngModel)]="destination" id="" placeholder="To">
-                    &nbsp;&nbsp;
+                    <input type="text" name="destination" [(ngModel)]="destination" id="destination" (keypress)="letterOnly($event)" placeholder="To">
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     <span class="input-group-btn">
                         <button id="searchButton" class="btn btn-primary" type="button" (click)="searchTrain()">
                             <span class="glyphicon glyphicon-search"> &nbsp; Search</span>
@@ -31,7 +31,7 @@
     
     
     <div>
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="trains-table">
             <thead class="thead">
                 <tr>
                     <th>Train ID</th>
@@ -54,7 +54,7 @@
                     <td>{{train.seats}}</td>
                     <td>{{train.time}}</td>
                     <!-- <td (click)="goToBooking()"><button>Book Now</button></td> -->
-                    <td  data-bs-toggle="modal" data-bs-target="#myModal"  (click)="onBooking(train)"><button>Book Now</button></td>
+                    <td  data-bs-toggle="modal" data-bs-target="#myModal"  (click)="onBooking(train)"><button class="btn-btn-primaty"  id="bookNow">Book Now</button></td>
                 </tr>
                 
             </tbody>
@@ -78,12 +78,12 @@
                  
                   <div class="mb-3">
                     <label for="" class="form-label">Passanger Name</label>
-                  <input type="text" formControlName="passangerName" class="form-control">
+                  <input type="text" formControlName="passangerName" (keypress)="letterOnly($event)"  class="form-control">
                   </div>
   
                   <div class="mb-3">
                     <label for="" class="form-label">Passanger Contact</label>
-                    <input type="tel" formControlName="passangerContact"  class="form-control">
+                    <input type="tel" formControlName="passangerContact"  (keypress)="keyPressNumbers($event)" class="form-control">
                   </div>
 
                   <div class="mb-3">
@@ -98,32 +98,32 @@
   
                   <div class="mb-3">
                     <label for="" class="form-label">Train Name</label>
-                    <input type="text" formControlName="trainName"  class="form-control">  
+                    <input type="text" formControlName="trainName"  (keypress)="letterOnly($event)"  class="form-control">  
                   </div>
 
                   <div class="mb-3">
                     <label for="" class="form-label">Source</label>
-                    <input type="text" formControlName="source"  class="form-control">  
+                    <input type="text" formControlName="source" (keypress)="letterOnly($event)"   class="form-control">  
                   </div>
 
                   <div class="mb-3">
                     <label for="" class="form-label">Destination</label>
-                    <input type="text" formControlName="destination"  class="form-control">  
+                    <input type="text" formControlName="destination" (keypress)="letterOnly($event)"   class="form-control">  
                   </div>
 
                   <div class="mb-3">
                     <label for="" class="form-label">Price</label>
-                    <input type="number" formControlName="price"  class="form-control">  
+                    <input type="number" formControlName="price" (keypress)="keyPressNumbers($event)"  class="form-control">  
                   </div>
 
                   <div class="mb-3">
                     <label for="" class="form-label">Time</label>
-                    <input type="time" formControlName="time"  class="form-control">  
+                    <input type="time" formControlName="time" (keypress)="keyPressNumbers($event)"  class="form-control">  
                   </div>
 
                   <div class="mb-3">
                     <label for="" class="form-label">Date</label>
-                    <input type="text" formControlName="date"  class="form-control"  placeholder="dd-mm-yyyy">  
+                    <input type="text" formControlName="date" (keypress)="keyPressNumbers($event)"  class="form-control"  placeholder="dd-mm-yyyy">  
                   </div>
 
                   </form>

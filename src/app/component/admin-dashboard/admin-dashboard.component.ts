@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HomeTrainsListService } from 'src/app/services/home-trains-list.service';
 import { UserService } from 'src/app/services/user.service';
@@ -33,8 +33,13 @@ export class AdminDashboardComponent implements OnInit {
 
  
   // to add new train
-  addTrainForm!:FormGroup;
+  addTrainForm:FormGroup;
   trainsDataModelObj:TrainsData=new TrainsData();
+
+
+  // to check for form submission
+  submitted=false;
+
 
   // to edit and add
   showAdd!:boolean;
@@ -87,19 +92,47 @@ export class AdminDashboardComponent implements OnInit {
  
  ngOnInit(): void {
 
+  /*
    // to new train to the list
    this.addTrainForm=this.formBuilder.group({
-     trainName:['' ,[Validators.required]],
-     source:[''],
-     destination:[''],
-     price:[''],
-     seats:[''],
-     time:['']
+     trainName:['' , [Validators.required,Validators.minLength(3)] , Validators.maxLength(20)],
+   
+     source:['' , [Validators.required,Validators.minLength(3)] , Validators.maxLength(20)],
+     destination:[''  , [Validators.required,Validators.minLength(3)] , Validators.maxLength(20)],
+     price:['' , Validators.required],
+     seats:['', Validators.required],
+     time:['', Validators.required]
 
    });
-
+   */
 
    
+   // to new train to the list
+   this.addTrainForm=this.formBuilder.group({
+    trainName:[''],
+   
+    source:[''],
+    destination:[''],
+    price:[''],
+    seats:[''],
+    time:['']
+
+  });
+  
+
+ }
+
+ get f(): { [key: string]: AbstractControl } {
+  return this.addTrainForm.controls;
+}
+
+onSubmit(){
+  this.submitted=true;
+
+  if(this.addTrainForm.invalid){
+    return
+  }
+  // alert("success");
  }
 
  clickAddTrain(){
@@ -209,6 +242,28 @@ export class AdminDashboardComponent implements OnInit {
  }*/
  
 
+
+/* for froms validation  */
+letterOnly(event:any) : Boolean{
+  const charCode = (event.which) ? event.which : event.keyCode;
+  if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+    return false;
+  }
+  return true;
+}
+
+keyPressNumbers(event: any) {
+  var charCode = (event.which) ? event.which : event.keyCode;
+  if ((charCode < 48 || charCode > 57))
+  {
+    event.preventDefault();
+    return false;
+  } else
+   {
+    return true;
+  }
+
+}
 
 
 
