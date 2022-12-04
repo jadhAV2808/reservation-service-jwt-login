@@ -74,63 +74,158 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
               </div>
               <div class="modal-body">
-                <form [formGroup]="ticketBookingForm">
+                <form [formGroup]="ticketBookingForm"  (ngSubmit)="onSubmit()">
                  
+
+
                   <div class="mb-3">
                     <label for="" class="form-label">Passanger Name</label>
-                  <input type="text" formControlName="passangerName" (keypress)="letterOnly($event)"  class="form-control">
+                  <input type="text" formControlName="passangerName"  class="form-control"
+                   [class.is-invalid]="passangerName?.invalid && passangerName?.touched">
+
+                   <div *ngIf="passangerName?.invalid && passangerName?.touched">
+                    <small *ngIf="passangerName?.errors?.['required']" class="text-danger">passangerName is required</small>
+                    <small *ngIf="passangerName?.errors?.['minlength']" class="text-danger">passangerName must be atleast 3 characters</small>
+                    <small *ngIf="passangerName?.errors?.['maxLength']" class="text-danger"> passangerName exceeding 20 characters not allowed</small>
+                  </div>
+
                   </div>
   
+
+
+
                   <div class="mb-3">
                     <label for="" class="form-label">Passanger Contact</label>
-                    <input type="tel" formControlName="passangerContact"  (keypress)="keyPressNumbers($event)" class="form-control">
+                    <input type="tel" formControlName="passangerContact"  (keypress)="keyPressNumbers($event)" class="form-control"
+                    [class.is-invalid]="passangerContact?.invalid && passangerContact?.touched">
+
+                    <div *ngIf="passangerContact?.invalid && passangerContact?.touched">
+                      <small *ngIf="passangerContact?.errors?.['required']" class="text-danger">passangerContact is required</small>
+                    </div>
+
                   </div>
+
+
+
+
 
                   <div class="mb-3">
                     <label for="" class="form-label">Passanger email</label>
-                    <input type="email" formControlName="passangerEmail" class="form-control">
+                    <input type="email" formControlName="passangerEmail" class="form-control"
+                    [class.is-invalid]="passangerEmail?.invalid && passangerEmail?.touched">
+
+                    <div *ngIf="passangerEmail?.invalid && passangerEmail?.touched">
+                      <small *ngIf="passangerEmail?.errors?.['required']" class="text-danger">passanger Email is required</small>
+                      <small *ngIf="passangerEmail?.errors?.['email']" class="text-danger"> Email not valid</small>
+                    </div>
                   </div>
   
+
+
+
                   <div class="mb-3">
                     <label for="" class="form-label">Train Id</label>
-                    <input type="number" formControlName="trainId"  class="form-control">
+                    <input type="number" formControlName="trainId"  class="form-control"
+                    [class.is-invalid]="trainId?.invalid && trainId?.touched">
+
+                    <div *ngIf="trainId?.invalid && trainId?.touched">
+                      <small *ngIf="trainId?.errors?.['required']" class="text-danger">train Id is required</small>
+                    </div>
                   </div>
   
                   <div class="mb-3">
                     <label for="" class="form-label">Train Name</label>
-                    <input type="text" formControlName="trainName"  (keypress)="letterOnly($event)"  class="form-control">  
+                    <input type="text" formControlName="trainName"   class="form-control"
+                    [class.is-invalid]="trainName?.invalid && trainName?.touched">  
+
+                    <div *ngIf="trainName?.invalid && trainName?.touched">
+                      <small *ngIf="trainName?.errors?.['required']" class="text-danger">trainName is required</small>
+                      <small *ngIf="trainName?.errors?.['minlength']" class="text-danger">trainName must be atleast 3 characters</small>
+                      <small *ngIf="trainName?.errors?.['maxLength']" class="text-danger"> trainName exceeding 20 characters not allowed</small>
+                    </div>
+
                   </div>
+
+
+
 
                   <div class="mb-3">
                     <label for="" class="form-label">Source</label>
-                    <input type="text" formControlName="source" (keypress)="letterOnly($event)"   class="form-control">  
+                    <input type="text" formControlName="source" (keypress)="letterOnly($event)"   class="form-control"
+                    [class.is-invalid]="sources?.invalid && sources?.touched">  
+
+                    <div *ngIf="sources?.invalid && sources?.touched">
+                      <small *ngIf="sources?.errors?.['required']" class="text-danger">this is required feild</small>
+                      <small *ngIf="sources?.errors?.['minlength']" class="text-danger"> must be atleast 3 characters</small>
+                      <small *ngIf="sources?.errors?.['maxLength']" class="text-danger"> source exceeding 20 characters not allowed</small>
+                    </div>
+
                   </div>
+
+
+
+
 
                   <div class="mb-3">
                     <label for="" class="form-label">Destination</label>
-                    <input type="text" formControlName="destination" (keypress)="letterOnly($event)"   class="form-control">  
+                    <input type="text" formControlName="destination" (keypress)="letterOnly($event)"   class="form-control"
+                    [class.is-invalid]="destinations?.invalid && destinations?.touched">  
+
+                    <div *ngIf="destinations?.invalid && destinations?.touched">
+                      <small *ngIf="destinations?.errors?.['required']" class="text-danger">this is required feild</small>
+                      <small *ngIf="destinations?.errors?.['minlength']" class="text-danger"> must be atleast 3 characters</small>
+                      <small *ngIf="destinations?.errors?.['maxLength']" class="text-danger"> destination exceeding 20 characters not allowed</small>
+                    </div>
+
                   </div>
+
+
+
 
                   <div class="mb-3">
                     <label for="" class="form-label">Price</label>
-                    <input type="number" formControlName="price" (keypress)="keyPressNumbers($event)"  class="form-control">  
+                    <input type="number" formControlName="price" (keypress)="keyPressNumbers($event)"  class="form-control"
+                    [class.is-invalid]="price?.invalid && price?.touched">  
+
+                    <div *ngIf="price?.invalid && price?.touched">
+                      <small *ngIf="price?.errors?.['required']" class="text-danger">this is required feild</small>
+                    </div>
+
                   </div>
+
+
+
 
                   <div class="mb-3">
                     <label for="" class="form-label">Time</label>
-                    <input type="time" formControlName="time" (keypress)="keyPressNumbers($event)"  class="form-control">  
+                    <input type="time" formControlName="time" (keypress)="keyPressNumbers($event)"  class="form-control"
+                    [class.is-invalid]="time?.invalid && time?.touched"> 
+                    
+                    <div *ngIf="time?.invalid && time?.touched">
+                      <small *ngIf="time?.errors?.['required']" class="text-danger">this is required feild</small>
+                    </div>
+
                   </div>
+
+
 
                   <div class="mb-3">
                     <label for="" class="form-label">Date</label>
-                    <input type="text" formControlName="date" (keypress)="keyPressNumbers($event)"  class="form-control"  placeholder="dd-mm-yyyy">  
+                    <input type="text" formControlName="date"   class="form-control"  placeholder="dd-mm-yyyy"
+                    [class.is-invalid]="date?.invalid && date?.touched"> 
+                    
+                    <div *ngIf="date?.invalid && date?.touched">
+                      <small *ngIf="date?.errors?.['required']" class="text-danger">this is required feild</small>
+                    </div>
+
                   </div>
 
                   </form>
               </div>
   
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" (click)="onSubmitOfTicket()">Submit</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!ticketBookingForm.valid" (click)="onSubmitOfTicket()">Submit</button>
+                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                 <button type="submit" data-bs-dismiss="modal" class="btn btn-primary" >Close</button>
               </div>
             </div>

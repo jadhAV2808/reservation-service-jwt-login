@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup , FormBuilder} from '@angular/forms';
+import { FormGroup , FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { HomeTrainsListService } from 'src/app/services/home-trains-list.service';
 import { TicketService } from 'src/app/services/ticket.service';
@@ -40,6 +40,7 @@ export class UserDashboardComponent implements OnInit {
 
   // for ticket booking form
   ticketBookingForm!:FormGroup;
+  // submitted = false;
 
 
   // object for ticket booking
@@ -84,7 +85,7 @@ export class UserDashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    /*
     this.ticketBookingForm=this.formBuilder.group({
       passangerName:[''],
       passangerContact:[''],
@@ -98,8 +99,37 @@ export class UserDashboardComponent implements OnInit {
       date:['']
 
   })
+  */
+
+  
+  this.ticketBookingForm=this.formBuilder.group({
+    passangerName:['',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+    passangerContact:['', Validators.required],
+    passangerEmail:['', [Validators.required, Validators.email]],
+    trainId:['' ,Validators.required],
+    trainName:['',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+    source:['',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+    destination:['',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+    price:['', Validators.required],
+    time:['' , Validators.required],
+    date:['' ,Validators.required]
+
+})
 
   }
+
+
+/*
+  get f() {
+     return this.ticketBookingForm.controls; 
+    }
+*/
+    onSubmit() {
+      console.log(this.ticketBookingForm.value);
+
+      // this.onSubmitOfTicket()
+
+    }
 
 
   goBack(){
@@ -191,5 +221,61 @@ keyPressNumbers(event: any) {
   }
 
 }
+
+
+/* getters for form validation */
+
+//getters for passangerName
+get passangerName(){
+  return this.ticketBookingForm.get('passangerName');
+}
+
+//getters for passangerContact
+get passangerContact(){
+  return this.ticketBookingForm.get('passangerContact');
+}
+
+//getters for passangerEmail
+get passangerEmail(){
+  return this.ticketBookingForm.get('passangerEmail');
+}
+
+//getters for trainId
+get trainId(){
+  return this.ticketBookingForm.get('trainId');
+}
+
+//getters for trainName
+get trainName(){
+  return this.ticketBookingForm.get('trainName');
+}
+
+//getters for source
+get sources(){
+  return this.ticketBookingForm.get('source');
+}
+
+//getters for destination
+get destinations(){
+  return this.ticketBookingForm.get('destination');
+}
+
+//getters for price
+get price(){
+  return this.ticketBookingForm.get('price');
+}
+
+//getters for time
+get time(){
+  return this.ticketBookingForm.get('time');
+}
+
+//getters for date
+get date(){
+  return this.ticketBookingForm.get('date');
+}
+
+
+
 
 }

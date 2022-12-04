@@ -21,8 +21,8 @@ nav{
 
 
 .home{
-    background-image: url('/assets/img/digital-rail.jpg');
-    /* background-image: url('/assets/img/t5.webp');  */
+    /* background-image: url('/assets/img/digital-rail.jpg'); */
+    background-image: url('/assets/img/t5.webp'); 
     padding-top: 100px;
     padding-bottom: 500px;
     width: 100%;
@@ -42,6 +42,12 @@ footer{
     text-align: center !important;
 }
 
+
+#quote{
+    /* color: rgb(221, 34, 97); */
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
 
 
 

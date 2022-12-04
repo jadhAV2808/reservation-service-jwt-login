@@ -92,21 +92,23 @@ export class AdminDashboardComponent implements OnInit {
  
  ngOnInit(): void {
 
-  /*
+  
+
    // to new train to the list
    this.addTrainForm=this.formBuilder.group({
-     trainName:['' , [Validators.required,Validators.minLength(3)] , Validators.maxLength(20)],
-   
-     source:['' , [Validators.required,Validators.minLength(3)] , Validators.maxLength(20)],
-     destination:[''  , [Validators.required,Validators.minLength(3)] , Validators.maxLength(20)],
-     price:['' , Validators.required],
-     seats:['', Validators.required],
-     time:['', Validators.required]
+    trainName:['' , [Validators.required,Validators.minLength(3) , Validators.maxLength(20)]],
+  
+    source:['' , [Validators.required,Validators.minLength(3) , Validators.maxLength(20)]],
+    destination:[''  , [Validators.required,Validators.minLength(3) , Validators.maxLength(20)]],
+    price:['' , Validators.required],
+    seats:['', Validators.required],
+    time:['', Validators.required]
 
-   });
-   */
 
-   
+  });
+  
+
+   /*
    // to new train to the list
    this.addTrainForm=this.formBuilder.group({
     trainName:[''],
@@ -118,21 +120,22 @@ export class AdminDashboardComponent implements OnInit {
     time:['']
 
   });
-  
+  */
 
  }
 
- get f(): { [key: string]: AbstractControl } {
-  return this.addTrainForm.controls;
-}
+ 
 
 onSubmit(){
-  this.submitted=true;
 
-  if(this.addTrainForm.invalid){
-    return
-  }
-  // alert("success");
+  if (this.addTrainForm.invalid) {
+    return;
+}
+
+
+  console.log(this.addTrainForm.value);
+  // this.addTrain()
+ 
  }
 
  clickAddTrain(){
@@ -264,6 +267,61 @@ keyPressNumbers(event: any) {
   }
 
 }
+
+
+/* getters for form validation */
+
+//getters for passangerName
+get passangerName(){
+  return this.addTrainForm.get('passangerName');
+}
+
+//getters for passangerContact
+get passangerContact(){
+  return this.addTrainForm.get('passangerContact');
+}
+
+//getters for passangerEmail
+get passangerEmail(){
+  return this.addTrainForm.get('passangerEmail');
+}
+
+//getters for trainId
+get trainId(){
+  return this.addTrainForm.get('trainId');
+}
+
+//getters for trainName
+get trainName(){
+  return this.addTrainForm.get('trainName');
+}
+
+//getters for source
+get sources(){
+  return this.addTrainForm.get('source');
+}
+
+//getters for destination
+get destinations(){
+  return this.addTrainForm.get('destination');
+}
+
+//getters for price
+get price(){
+  return this.addTrainForm.get('price');
+}
+
+//getters for seats
+get seats(){
+  return this.addTrainForm.get('seats');
+}
+
+//getters for time
+get time(){
+  return this.addTrainForm.get('time');
+}
+
+
 
 
 

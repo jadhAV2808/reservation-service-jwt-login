@@ -195,131 +195,90 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="addTrainForm">
+                <form [formGroup]="addTrainForm"   (ngSubmit)="onSubmit()">
                     <div class="form-group">
                       <label for="trainName">Train Name</label>
-                      <input type="text" formControlName="trainName" (keypress)="letterOnly($event)"  class="form-control" id="trainName" placeholder="Enter Train Name"> 
+                      <input type="text" formControlName="trainName"   class="form-control" id="trainName" placeholder="Enter Train Name"
+                      [class.is-invalid]="trainName?.invalid && trainName?.touched">  
                       
-                            
-                     <!--
-                      <input type="text" formControlName="trainName" [ngClass]="{ 'is-invalid': submitted && addTrainForm?.controls?.['trainName']?.errors}" class="form-control" id="trainName" placeholder="Enter Train Name"> 
-                      
-                       !-- for getting error messages --
-                      <div *ngIf="submitted && f['trainName'].errors" class="text-danger">
-                        <div *ngIf="submitted && f['trainName'].errors?.['required']">
-                          train name is required
-                        </div>
-                        <div *ngIf="submitted && f['trainName'].errors?.['minLength']">
-                          train name contains atleast 3 letters
-                        </div>
-                        <div *ngIf="submitted && f['trainName'].errors?.['maxLength']">
-                          train name contains maximum 20 letters
-                        </div>
-                      </div> -->
-
-
-
+                      <div *ngIf="trainName?.invalid && trainName?.touched">
+                        <small *ngIf="trainName?.errors?.['required']" class="text-danger">trainName is required</small>
+                        <small *ngIf="trainName?.errors?.['minlength']" class="text-danger">trainName must be atleast 3 characters</small>
+                        <small *ngIf="trainName?.errors?.['maxLength']" class="text-danger"> trainName exceeding 20 characters not allowed</small>
+                      </div>
 
                     </div>
     
                     <div class="form-group">
                       <label for="source">Source</label>
-                      <input type="text" formControlName="source"  (keypress)="letterOnly($event)" class="form-control" id="source" placeholder="Source">
+                      <input type="text" formControlName="source"  (keypress)="letterOnly($event)" class="form-control" id="source" placeholder="Source"
+                      [class.is-invalid]="sources?.invalid && sources?.touched"> 
 
-
-
-<!-- 
-                      <input type="text" formControlName="source" [ngClass]="{ 'is-invalid': submitted && f['source'].errors}" class="form-control" id="source" placeholder="Source">
-                      !-- for getting error messages --
-                      <div *ngIf="submitted && f['source'].errors" class="text-danger">
-                        <div *ngIf="submitted && f['source'].errors?.['required']">
-                          train name is required
-                        </div>
-                        <div *ngIf="submitted && f['source'].errors?.['minLength']">
-                          train name contains atleast 3 letters
-                        </div>
-                        <div *ngIf="submitted && f['source'].errors?.['maxLength']">
-                          train name contains maximum 20 letters
-                        </div>
+                      <div *ngIf="sources?.invalid && sources?.touched">
+                        <small *ngIf="sources?.errors?.['required']" class="text-danger">this is required feild</small>
+                        <small *ngIf="sources?.errors?.['minlength']" class="text-danger"> must be atleast 3 characters</small>
+                        <small *ngIf="sources?.errors?.['maxLength']" class="text-danger"> source exceeding 20 characters not allowed</small>
                       </div>
- -->
 
                     </div>
     
                     <div class="form-group">
                         <label for="destination">Destination</label>
-                        <input type="text" formControlName="destination" (keypress)="letterOnly($event)" class="form-control" id="destination" placeholder="Destination"> 
+                        <input type="text" formControlName="destination"  class="form-control" id="destination" placeholder="Destination"
+                        [class.is-invalid]="destinations?.invalid && destinations?.touched">   
                         
-
-<!-- 
-                        <input type="text" formControlName="destination" [ngClass]="{ 'is-invalid': submitted && f['destination'].errors}" class="form-control" id="destination" placeholder="Destination"> 
-                         !-- for getting error messages --
-                        <div *ngIf="submitted && f['destination'].errors" class="text-danger">
-                          <div *ngIf="submitted && f['destination'].errors?.['required']">
-                            destination is required
-                          </div>
-                          <div *ngIf="submitted && f['destination'].errors?.['minLength']">
-                            destination contains atleast 3 letters
-                          </div>
-                          <div *ngIf="submitted && f['destination'].errors?.['maxLength']">
-                            destination contains maximum 20 letters
-                          </div>
-                        </div> -->
-
-
+                        <div *ngIf="destinations?.invalid && destinations?.touched">
+                          <small *ngIf="destinations?.errors?.['required']" class="text-danger">this is required feild</small>
+                          <small *ngIf="destinations?.errors?.['minlength']" class="text-danger"> must be atleast 3 characters</small>
+                          <small *ngIf="destinations?.errors?.['maxLength']" class="text-danger"> destination exceeding 20 characters not allowed</small>
+                        </div>
 
                       </div>
     
                       <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="number" formControlName="price" (keypress)="keyPressNumbers($event)" class="form-control" id="price" placeholder="Price">
+                        <input type="number" formControlName="price" (keypress)="keyPressNumbers($event)" class="form-control" id="price" placeholder="Price"
+                        [class.is-invalid]="price?.invalid && price?.touched">  
 
-<!-- 
-                        <input type="number" formControlName="price" [ngClass]="{ 'is-invalid': submitted && f['price'].errors}" class="form-control" id="price" placeholder="Price">
+                        <div *ngIf="price?.invalid && price?.touched">
+                          <small *ngIf="price?.errors?.['required']" class="text-danger">this is required feild</small>
+                        </div>
 
-                        <div *ngIf="submitted && f['price'].errors" class="text-danger">
-                          <div *ngIf="submitted && f['price'].errors?.['required']">
-                            price is required
-                          </div>
-                        </div> -->
 
                       </div>
     
                       <div class="form-group">
                         <label for="seats">seats</label>
-                        <input type="number" formControlName="seats" (keypress)="keyPressNumbers($event)"  class="form-control" id="seats" placeholder="seats">   
+                        <input type="number" formControlName="seats" (keypress)="keyPressNumbers($event)"  class="form-control" id="seats" placeholder="seats"
+                        [class.is-invalid]="seats?.invalid && seats?.touched">  
 
-<!-- 
-                        <input type="number" formControlName="seats" [ngClass]="{ 'is-invalid': submitted && f['seats'].errors}" class="form-control" id="seats" placeholder="seats">   
+                        <div *ngIf="seats?.invalid && seats?.touched">
+                          <small *ngIf="seats?.errors?.['required']" class="text-danger">this is required feild</small>
+                        </div>  
 
-                        <div *ngIf="submitted && f['price'].errors" class="text-danger">
-                          <div *ngIf="submitted && f['price'].errors?.['required']">
-                            price is required
-                          </div>
-                        </div> -->
+
 
                       </div>
     
                       <div class="form-group">
                         <label for="time">time</label>
-                        <input type="time" formControlName="time" (keypress)="keyPressNumbers($event)"  class="form-control" id="time" placeholder="time">
+                        <input type="time" formControlName="time"   class="form-control" id="time" placeholder="time"
+                        [class.is-invalid]="time?.invalid && time?.touched"> 
+                        
+                        <div *ngIf="time?.invalid && time?.touched">
+                          <small *ngIf="time?.errors?.['required']" class="text-danger">this is required feild</small>
+                        </div>
 
-                        <!-- <input type="time" formControlName="time" [ngClass]="{ 'is-invalid': submitted && f['time'].errors}" class="form-control" id="time" placeholder="time">
-                        <div *ngIf="submitted && f['time'].errors" class="text-danger">
-                          <div *ngIf="submitted && f['time'].errors?.['required']">
-                            time is required
-                          </div>
-                        </div> -->
-
+                       
                       </div>
-                    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                    
                   </form>
             </div>
             <div class="modal-footer">
               <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
               <button type="button" id="clear" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-              <button *ngIf="showAdd" type="button" class="btn btn-primary"  (click)="addTrain()">ADD</button>
-              <button *ngIf="showEdit" type="button" class="btn btn-primary"  (click)="updateTrain()">EDIT</button>
+              <button *ngIf="showAdd" type="button" class="btn btn-primary" [disabled]="!addTrainForm.valid"  (click)="addTrain()">ADD</button>
+              <button *ngIf="showEdit" type="button" class="btn btn-primary" [disabled]="!addTrainForm.valid"  (click)="updateTrain()">EDIT</button>
             </div>
           </div>
         </div>
